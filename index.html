@@ -73,103 +73,6 @@
             background-color: #0056b3;
         }
     </style>
-    <!-- Firebase Scripts -->
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // Function to add a new task
-        async function addTaskToFirestore(task) {
-            try {
-                const docRef = await addDoc(collection(db, "tasks"), task);
-                console.log("Task added with ID: ", docRef.id);
-                loadTasksFromFirestore(); // Refresh the tasks after adding
-            } catch (e) {
-                console.error("Error adding task: ", e);
-            }
-        }
-
-        // Function to load tasks from Firestore
-        async function loadTasksFromFirestore() {
-            const tasksListElement = document.getElementById('task-list');
-            tasksListElement.innerHTML = ''; // Clear the current list
-
-            try {
-                const querySnapshot = await getDocs(collection(db, "tasks"));
-                querySnapshot.forEach((doc) => {
-                    const task = doc.data();
-                    const listItem = document.createElement('li');
-                    listItem.innerHTML = `${task.title} [Importance: ${task.importance}, Time: ${task.estimatedTime}, Deadline: ${task.deadline ? task.deadline : 'N/A'}] 
-                        <button onclick="deleteTask('${doc.id}')">Complete</button>`;
-                    tasksListElement.appendChild(listItem);
-                });
-            } catch (e) {
-                console.error("Error loading tasks: ", e);
-            }
-        }
-
-        // Function to delete a task from Firestore
-        async function deleteTask(taskId) {
-            try {
-                await deleteDoc(doc(db, "tasks", taskId));
-                console.log("Task deleted with ID: ", taskId);
-                loadTasksFromFirestore(); // Refresh the tasks after deleting
-            } catch (e) {
-                console.error("Error deleting task: ", e);
-            }
-        }
-
-        // Function to be called when adding a task from the form
-        function addTask() {
-            const title = document.getElementById('task-title').value;
-            const importance = document.getElementById('task-importance').value;
-            const estimatedTime = document.getElementById('task-time').value;
-            const deadline = document.getElementById('task-deadline').value;
-
-            if (!title || !importance || !estimatedTime) {
-                alert("Please fill in all fields correctly.");
-                return;
-            }
-
-            const task = {
-                title,
-                importance: parseInt(importance),
-                estimatedTime,
-                deadline
-            };
-
-            addTaskToFirestore(task);
-            clearInputs();
-        }
-
-        // Function to clear input fields
-        function clearInputs() {
-            document.getElementById('task-title').value = '';
-            document.getElementById('task-importance').value = '';
-            document.getElementById('task-time').value = '';
-            document.getElementById('task-deadline').value = '';
-        }
-
-        // Load tasks from Firestore when the document is ready
-        document.addEventListener("DOMContentLoaded", () => {
-            loadTasksFromFirestore();
-        });
-    </script>
 </head>
 <body>
     <div class="task-manager">
@@ -198,5 +101,93 @@
             <ul id="task-list"></ul>
         </div>
     </div>
+    
+    <script>
+        let tasks = [];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadTasks();
+        });
+
+        function addTask() {
+            const title = document.getElementById('task-title').value;
+            const importance = document.getElementById('task-importance').value;
+            const estimatedTime = document.getElementById('task-time').value;
+            const deadline = document.getElementById('task-deadline').value;
+
+            if (!title || !importance || !estimatedTime) {
+                alert("Please fill in all fields correctly.");
+                return;
+            }
+
+            tasks.push({
+                title,
+                importance: parseInt(importance),
+                estimatedTime,
+                deadline
+            });
+            saveTasks();
+            displayTasks();
+            clearInputs();
+        }
+
+        function displayTasks() {
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = '';
+            tasks.forEach((task, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `${task.title} [Importance: ${task.importance}, Time: ${task.estimatedTime}, Deadline: ${task.deadline ? task.deadline : 'N/A'}] <button onclick="removeTask(${index})">Complete</button>`;
+                taskList.appendChild(listItem);
+            });
+        }
+
+        function removeTask(index) {
+            tasks.splice(index, 1);
+            saveTasks();
+            displayTasks();
+        }
+
+        function clearInputs() {
+            document.getElementById('task-title').value = '';
+            document.getElementById('task-importance').value = '';
+            document.getElementById('task-time').value = '';
+            document.getElementById('task-deadline').value = '';
+        }
+
+        function sortTasks() {
+            tasks.sort((a, b) => calculateScore(b) - calculateScore(a));
+            saveTasks();
+            displayTasks();
+        }
+
+        function calculateScore(task) {
+            const timeParts = task.estimatedTime.split(":");
+            const timeInMinutes = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+            const importanceScore = task.importance / timeInMinutes;
+            let deadlineScore = 1;
+
+            if (task.deadline) {
+                const deadlineTime = new Date(task.deadline).getTime();
+                const now = new Date().getTime();
+                const timeToDeadline = (deadlineTime - now) / 60000; // time in minutes
+                const x = timeToDeadline / Math.max(timeInMinutes, 1);
+                deadlineScore = 18 / (1 + Math.exp(x / 2)) + 1;
+            }
+            
+            return importanceScore * deadlineScore;
+        }
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function loadTasks() {
+            const savedTasks = localStorage.getItem('tasks');
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+                displayTasks();
+            }
+        }
+    </script>
 </body>
 </html>
