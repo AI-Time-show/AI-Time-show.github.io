@@ -105,6 +105,10 @@
     <script>
         let tasks = [];
 
+        document.addEventListener("DOMContentLoaded", () => {
+            loadTasks();
+        });
+
         function addTask() {
             const title = document.getElementById('task-title').value;
             const importance = document.getElementById('task-importance').value;
@@ -122,6 +126,7 @@
                 estimatedTime,
                 deadline
             });
+            saveTasks();
             displayTasks();
             clearInputs();
         }
@@ -138,6 +143,7 @@
 
         function removeTask(index) {
             tasks.splice(index, 1);
+            saveTasks();
             displayTasks();
         }
 
@@ -150,6 +156,7 @@
 
         function sortTasks() {
             tasks.sort((a, b) => calculateScore(b) - calculateScore(a));
+            saveTasks();
             displayTasks();
         }
 
@@ -168,6 +175,18 @@
             }
             
             return importanceScore * deadlineScore;
+        }
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function loadTasks() {
+            const savedTasks = localStorage.getItem('tasks');
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+                displayTasks();
+            }
         }
     </script>
 </body>
