@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Time | Weekly AI Discussions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+        }
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        .futuristic-border {
+            position: relative;
+        }
+        .futuristic-border::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .futuristic-border:hover::after {
+            opacity: 1;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .host-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .glow-effect {
+            transition: text-shadow 0.3s ease;
+        }
+        .glow-effect:hover {
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+        }
+        .neon-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .neon-btn:hover {
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+        }
+        .neon-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        .neon-btn:hover::before {
+            opacity: 1;
+            animation: shine 1.5s;
+        }
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        .stats-item {
+            transition: all 0.3s ease;
+        }
+        .stats-item:hover {
+            transform: scale(1.05);
+        }
+        .community-card {
+            transition: all 0.3s ease;
+        }
+        .community-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center">
+                    <div class="w-6 h-6 relative">
+                        <div class="absolute w-2 h-2 bg-white rounded-full top-0 left-0"></div>
+                        <div class="absolute w-2 h-2 bg-white rounded-full top-0 right-0"></div>
+                        <div class="absolute w-2 h-2 bg-white rounded-full bottom-0 left-1"></div>
+                    </div>
+                </div>
+                <a href="#" class="text-xl font-bold logo-text">AI-TIME</a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="futuristic-border py-2">Home</a>
+                <a href="#about" class="futuristic-border py-2">About</a>
+                <a href="#episodes" class="futuristic-border py-2">Episodes</a>
+                <a href="#community" class="futuristic-border py-2">Community</a>
+                <a href="#contact" class="futuristic-border py-2">Contact</a>
+            </div>
+            <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="bg-black text-white px-4 py-2 rounded-full flex items-center space-x-2 neon-btn">
+                <i class="fab fa-youtube"></i>
+                <span>Watch Now</span>
+            </a>
+            <button class="md:hidden text-gray-900">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-4 flex flex-col items-center text-center">
+            <div class="w-32 h-32 md:w-40 md:h-40 bg-black rounded-full flex items-center justify-center mb-8">
+                <div class="w-20 h-20 md:w-24 md:h-24 relative">
+                    <div class="absolute w-4 h-4 bg-white rounded-full top-0 left-0"></div>
+                    <div class="absolute w-4 h-4 bg-white rounded-full top-0 right-0"></div>
+                    <div class="absolute w-4 h-4 bg-white rounded-full bottom-0 left-1/2 transform -translate-x-1/2"></div>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 logo-text">AI-TIME</h1>
+            <p class="text-xl md:text-2xl font-light mb-8 max-w-2xl">A weekly gathering to talk about <span class="font-semibold">#artificialintelligence</span></p>
+            <p class="text-gray-600 mb-12 max-w-2xl">Friendly, scientific discussions bridging the gap between AI technologies and daily life. You're invited as the fourth member of our conversations.</p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="bg-black text-white px-8 py-3 rounded-full flex items-center justify-center space-x-2 neon-btn">
+                    <i class="fab fa-youtube"></i>
+                    <span>Subscribe on YouTube</span>
+                </a>
+                <a href="#episodes" class="border border-black text-black px-8 py-3 rounded-full flex items-center justify-center space-x-2">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Watch Episodes</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet Your Hosts</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Three friends with 20 years of history, bringing you thoughtful discussions about AI and everyday life.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Host 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl host-card transition-all duration-300">
+                    <div class="w-24 h-24 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-xl font-bold">M</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Mahdiyar Molahasani</h3>
+                    <p class="text-gray-500 text-center mb-4">Ph.D. candidate at Ingenuity labs, Queen's University</p>
+                    <p class="text-gray-700">Researcher focused on human-robot interaction and AI ethics. Brings academic rigor to our discussions.</p>
+                </div>
+                
+                <!-- Host 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl host-card transition-all duration-300">
+                    <div class="w-24 h-24 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-xl font-bold">A</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Amin Omidvar</h3>
+                    <p class="text-gray-500 text-center mb-4">Enthusiastic, innovative, and curious teacher</p>
+                    <p class="text-gray-700">Passionate educator who translates complex AI concepts into accessible insights for everyday life.</p>
+                </div>
+                
+                <!-- Host 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl host-card transition-all duration-300">
+                    <div class="w-24 h-24 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-xl font-bold">J</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Javad Taghdisi</h3>
+                    <p class="text-gray-500 text-center mb-4">Brand Strategist & AI Content Creator</p>
+                    <p class="text-gray-700">Creative thinker who connects AI developments with real-world applications and business implications.</p>
+                </div>
+            </div>
+            
+            <div class="bg-black text-white p-8 md:p-12 rounded-xl">
+                <div class="max-w-4xl mx-auto">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center glow-effect">Our Journey So Far</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-gray-900 p-4 rounded-lg text-center stats-item">
+                            <div class="text-2xl font-bold text-blue-300">66</div>
+                            <div class="text-sm text-gray-300">Episodes</div>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-lg text-center stats-item">
+                            <div class="text-2xl font-bold text-blue-300">651</div>
+                            <div class="text-sm text-gray-300">Subscribers</div>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-lg text-center stats-item">
+                            <div class="text-2xl font-bold text-blue-300">20,224</div>
+                            <div class="text-sm text-gray-300">Views</div>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-lg text-center stats-item">
+                            <div class="text-2xl font-bold text-blue-300">2024</div>
+                            <div class="text-sm text-gray-300">Since July</div>
+                        </div>
+                    </div>
+                    <p class="text-center text-gray-300">What started as casual conversations between friends has grown into a weekly ritual exploring how artificial intelligence intersects with our daily lives. We're just getting started, and we'd love for you to join us on this journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Episodes Section -->
+    <section id="episodes" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Recent Episodes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Browse our latest discussions on AI and everyday life.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Episode 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm video-card transition-all duration-300">
+                    <div class="relative pb-[56.25%] bg-gray-200">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 bg-black bg-opacity-70 rounded-full flex items-center justify-center">
+                                <i class="fas fa-play text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">AI in Education: The Future of Learning</h3>
+                        <p class="text-gray-600 text-sm mb-4">How AI is transforming classrooms and self-directed learning.</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500">
+                            <span>Episode 66</span>
+                            <span>Jul 12, 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Episode 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm video-card transition-all duration-300">
+                    <div class="relative pb-[56.25%] bg-gray-200">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 bg-black bg-opacity-70 rounded-full flex items-center justify-center">
+                                <i class="fas fa-play text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">Ethical AI: Who Decides What's Right?</h3>
+                        <p class="text-gray-600 text-sm mb-4">Exploring the moral frameworks behind AI decision-making.</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500">
+                            <span>Episode 65</span>
+                            <span>Jul 5, 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Episode 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm video-card transition-all duration-300">
+                    <div class="relative pb-[56.25%] bg-gray-200">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 bg-black bg-opacity-70 rounded-full flex items-center justify-center">
+                                <i class="fas fa-play text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">AI Assistants: Helpful or Hindrance?</h3>
+                        <p class="text-gray-600 text-sm mb-4">Examining how AI assistants impact our productivity and privacy.</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500">
+                            <span>Episode 64</span>
+                            <span>Jun 28, 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="inline-block bg-black text-white px-8 py-3 rounded-full neon-btn">
+                    <i class="fab fa-youtube mr-2"></i> View All Episodes
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Join Our Community</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Your voice matters in these discussions. Become the fourth member of our conversations.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-gray-50 p-8 rounded-xl community-card">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-comments text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Share Your Thoughts</h3>
+                    <p class="text-gray-700 text-center">Comment on our YouTube videos with your perspectives and questions.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl community-card">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-lightbulb text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Suggest Topics</h3>
+                    <p class="text-gray-700 text-center">Tell us what AI topics you'd like us to explore in future episodes.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl community-card">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-users text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Connect With Others</h3>
+                    <p class="text-gray-700 text-center">Engage with fellow AI enthusiasts in our growing community.</p>
+                </div>
+            </div>
+            
+            <div class="bg-black text-white p-8 rounded-xl max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="mb-6 md:mb-0 md:mr-8">
+                        <h3 class="text-xl font-bold mb-2">Never Miss an Episode</h3>
+                        <p class="text-gray-300">Subscribe to our YouTube channel for weekly AI discussions.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="bg-white text-black px-6 py-3 rounded-full flex items-center justify-center space-x-2 neon-btn">
+                        <i class="fab fa-youtube"></i>
+                        <span>Subscribe Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Have questions or collaboration ideas? We'd love to hear from you.</p>
+            </div>
+            
+            <form class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                    <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent">
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-black text-white py-3 rounded-full font-medium neon-btn">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                            <div class="w-5 h-5 relative">
+                                <div class="absolute w-1.5 h-1.5 bg-black rounded-full top-0 left-0"></div>
+                                <div class="absolute w-1.5 h-1.5 bg-black rounded-full top-0 right-0"></div>
+                                <div class="absolute w-1.5 h-1.5 bg-black rounded-full bottom-0 left-1/2 transform -translate-x-1/2"></div>
+                            </div>
+                        </div>
+                        <span class="text-xl font-bold">AI-TIME</span>
+                    </div>
+                    <p class="text-gray-400">Weekly discussions about artificial intelligence and everyday life.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#episodes" class="text-gray-400 hover:text-white transition">Episodes</a></li>
+                        <li><a href="#community" class="text-gray-400 hover:text-white transition">Community</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Channel Stats</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-users mr-2"></i>
+                            <span>651 Subscribers</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-video mr-2"></i>
+                            <span>66 Videos</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-eye mr-2"></i>
+                            <span>20,224 Views</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>Since July 2024</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 AI-Time. All rights reserved. | Designed with ♥ for AI enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            const mobileMenu = document.querySelector('.md\\:flex.space-x-8');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                mobileMenu.classList.toggle('flex-col');
+                mobileMenu.classList.toggle('absolute');
+                mobileMenu.classList.toggle('top-16');
+                mobileMenu.classList.toggle('left-0');
+                mobileMenu.classList.toggle('right-0');
+                mobileMenu.classList.toggle('bg-white');
+                mobileMenu.classList.toggle('p-4');
+                mobileMenu.classList.toggle('shadow-md');
+                mobileMenu.classList.toggle('space-y-4');
+                mobileMenu.classList.toggle('space-x-0');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenuButton.click();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
