@@ -1,482 +1,546 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Time | Weekly AI Discussions</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>AI.Time | Weekly AI & Everyday Life Discussions</title>
+    <meta name="description"
+        content="A weekly meetup exploring how artificial intelligence shapes our daily lives. Join Mahdiyar, Amin, and Javad for insightful discussions on AI.">
+    <meta name="keywords" content="AI, artificial intelligence, podcast, YouTube, هوش مصنوعی, technology">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Persian Font - IRANSansX (via CDN) -->
+    <link href="https://cdn.jsdelivr.net/gh/nicefacehome/IRANSansXFaNum@latest/WebFonts/css/style.css" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8fafc;
-        }
-        .logo-text {
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-        .futuristic-border {
-            position: relative;
-        }
-        .futuristic-border::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00f0ff, transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .futuristic-border:hover::after {
-            opacity: 1;
-        }
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .host-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .glow-effect {
-            transition: text-shadow 0.3s ease;
-        }
-        .glow-effect:hover {
-            text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
-        }
-        .neon-btn {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .neon-btn:hover {
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
-        }
-        .neon-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(0, 240, 255, 0.3), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-        .neon-btn:hover::before {
-            opacity: 1;
-            animation: shine 1.5s;
-        }
-        @keyframes shine {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-        .stats-item {
-            transition: all 0.3s ease;
-        }
-        .stats-item:hover {
-            transform: scale(1.05);
-        }
-        .community-card {
-            transition: all 0.3s ease;
-        }
-        .community-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-white text-gray-900">
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <img src="https://i.postimg.cc/PPRSYWpm/Logo-zoomed.png" alt="AI-Time Logo" class="h-10">
-                <a href="#" class="text-xl font-bold logo-text">AI-TIME</a>
-            </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#" class="futuristic-border py-2">Home</a>
-                <a href="#about" class="futuristic-border py-2">About</a>
-                <a href="#episodes" class="futuristic-border py-2">Episodes</a>
-                <a href="#community" class="futuristic-border py-2">Community</a>
-                <a href="#contact" class="futuristic-border py-2">Contact</a>
-            </div>
-            <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="bg-black text-white px-4 py-2 rounded-full flex items-center space-x-2 neon-btn">
-                <i class="fab fa-youtube"></i>
-                <span>Watch Now</span>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">
+                <img src="assets/logo.png" alt="AI.Time Logo">
             </a>
-            <button class="md:hidden text-gray-900">
-                <i class="fas fa-bars text-xl"></i>
+
+            <ul class="nav-links">
+                <li><a href="#about" data-en="About" data-fa="درباره ما">About</a></li>
+                <li><a href="#hosts" data-en="Hosts" data-fa="میزبانان">Hosts</a></li>
+                <li><a href="#episodes" data-en="Episodes" data-fa="قسمت‌ها">Episodes</a></li>
+                <li><a href="#community" data-en="Community" data-fa="انجمن">Community</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Language Toggle -->
+                <button class="lang-toggle" id="langToggle" title="Switch Language">
+                    <span class="lang-text">FA</span>
+                </button>
+
+                <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="nav-cta">
+                    <i class="fab fa-youtube"></i>
+                    <span data-en="Subscribe" data-fa="عضویت">Subscribe</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" data-en="About" data-fa="درباره ما">About</a>
+        <a href="#hosts" data-en="Hosts" data-fa="میزبانان">Hosts</a>
+        <a href="#episodes" data-en="Episodes" data-fa="قسمت‌ها">Episodes</a>
+        <a href="#community" data-en="Community" data-fa="انجمن">Community</a>
+        <a href="https://www.youtube.com/@AI_Time_show" target="_blank" data-en="YouTube Channel"
+            data-fa="کانال یوتیوب">YouTube Channel</a>
+    </div>
+
     <!-- Hero Section -->
-    <section class="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
-        <div class="container mx-auto px-4 flex flex-col items-center text-center">
-            <img src="https://i.postimg.cc/PPRSYWpm/Logo-zoomed.png" alt="AI-Time Logo" class="h-32 md:h-40 mb-8">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 logo-text">AI-TIME</h1>
-            <p class="text-xl md:text-2xl font-light mb-8 max-w-2xl">A weekly gathering to talk about <span class="font-semibold">#artificialintelligence</span></p>
-            <p class="text-gray-600 mb-12 max-w-2xl">Friendly, scientific discussions bridging the gap between AI technologies and daily life. You're invited as the fourth member of our conversations.</p>
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="bg-black text-white px-8 py-3 rounded-full flex items-center justify-center space-x-2 neon-btn">
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                <span data-en="New Episode Every Week" data-fa="هر هفته یک قسمت جدید">New Episode Every Week</span>
+            </div>
+
+            <div class="hero-logo">
+                <img src="assets/logo.png" alt="AI.Time Logo">
+            </div>
+
+            <h1 data-en="Welcome to <span class='gradient-text'>AI.Time</span>"
+                data-fa="به <span class='gradient-text'>AI.Time</span> خوش آمدید">Welcome to <span
+                    class="gradient-text">AI.Time</span></h1>
+
+            <p class="hero-description" data-en="🎥 A Weekly Meetup on #ArtificialIntelligence and Everyday Life"
+                data-fa="🎥 نشست هفتگی درباره #هوش_مصنوعی و زندگی روزمره">
+                🎥 A Weekly Meetup on #ArtificialIntelligence and Everyday Life
+            </p>
+            <p class="hero-description-sub"
+                data-en="Three friends with 20+ years of friendship exploring how AI shapes our world"
+                data-fa="سه دوست با بیش از ۲۰ سال رفاقت، در حال کاوش در تأثیر هوش مصنوعی بر دنیای ما">
+                Three friends with 20+ years of friendship exploring how AI shapes our world
+            </p>
+
+            <div class="hero-buttons">
+                <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="btn-primary">
                     <i class="fab fa-youtube"></i>
-                    <span>Subscribe on YouTube</span>
+                    <span data-en="Subscribe on YouTube" data-fa="عضویت در یوتیوب">Subscribe on YouTube</span>
                 </a>
-                <a href="#episodes" class="border border-black text-black px-8 py-3 rounded-full flex items-center justify-center space-x-2">
+                <a href="#episodes" class="btn-secondary">
                     <i class="fas fa-play-circle"></i>
-                    <span>Watch Episodes</span>
+                    <span data-en="Watch Episodes" data-fa="تماشای قسمت‌ها">Watch Episodes</span>
                 </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">1.13K+</div>
+                    <div class="stat-label" data-en="Subscribers" data-fa="مشترک">Subscribers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">131</div>
+                    <div class="stat-label" data-en="Episodes" data-fa="قسمت">Episodes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">94K+</div>
+                    <div class="stat-label" data-en="Views" data-fa="بازدید">Views</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet Your Hosts</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Three friends with 20 years of history, bringing you thoughtful discussions about AI and everyday life.</p>
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-en="About Us" data-fa="درباره ما">About Us</span>
+                <h2 data-en="Three Friends, One Passion" data-fa="سه دوست، یک علاقه">Three Friends, One Passion</h2>
+                <p data-en="20+ years of friendship exploring how AI shapes our world"
+                    data-fa="بیش از ۲۰ سال رفاقت در کاوش تأثیر هوش مصنوعی بر دنیای ما">20+ years of friendship exploring
+                    how AI shapes our world</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <!-- Host 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl host-card transition-all duration-300">
-                    <div class="w-24 h-24 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <span class="text-white text-xl font-bold">M</span>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-en="Bridging Technology & Daily Life" data-fa="پل زدن بین تکنولوژی و زندگی روزمره">Bridging
+                        Technology & Daily Life</h3>
+                    <p data-en="We're three long-time friends who come together each week to explore how artificial intelligence is shaping our daily lives."
+                        data-fa="ما سه دوست قدیمی هستیم که هر هفته دور هم جمع می‌شویم تا درباره تأثیر هوش مصنوعی بر زندگی روزمره صحبت کنیم.">
+                        We're three long-time friends who come together each week to explore how artificial intelligence
+                        is shaping our daily lives.</p>
+
+                    <div class="about-features-list">
+                        <div class="about-feature-item">
+                            <span class="feature-icon-small">🔹</span>
+                            <span data-en="We break down complex AI topics into digestible insights"
+                                data-fa="مفاهیم پیچیده هوش مصنوعی را ساده و قابل فهم می‌کنیم">We break down complex AI
+                                topics into digestible insights</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="feature-icon-small">🔹</span>
+                            <span data-en="We share real experiences with AI tools and technologies"
+                                data-fa="تجربیات واقعی‌مان را به اشتراک می‌گذاریم">We share real experiences with AI
+                                tools and technologies</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="feature-icon-small">🔹</span>
+                            <span data-en="We discuss bridging the gap between cutting-edge tech and real-world living"
+                                data-fa="درباره کم کردن فاصله بین تکنولوژی پیشرفته و زندگی روزمره صحبت می‌کنیم">We
+                                discuss bridging the gap between cutting-edge tech and real-world living</span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-center mb-2">Mahdiyar Molahasani</h3>
-                    <p class="text-gray-500 text-center mb-4">Ph.D. candidate at Ingenuity labs, Queen's University</p>
-                    <p class="text-gray-700">Researcher focused on human-robot interaction and AI ethics. Brings academic rigor to our discussions.</p>
                 </div>
-                
-                <!-- Host 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl host-card transition-all duration-300">
-                    <div class="w-24 h-24 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <span class="text-white text-xl font-bold">A</span>
+
+                <div class="about-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4 data-en="Practical Focus" data-fa="تمرکز عملی">Practical Focus</h4>
+                        <p data-en="Real-world applications of AI in everyday scenarios"
+                            data-fa="کاربردهای واقعی هوش مصنوعی در سناریوهای روزمره">Real-world applications of AI in
+                            everyday scenarios</p>
                     </div>
-                    <h3 class="text-xl font-bold text-center mb-2">Amin Omidvar</h3>
-                    <p class="text-gray-500 text-center mb-4">Enthusiastic, innovative, and curious teacher</p>
-                    <p class="text-gray-700">Passionate educator who translates complex AI concepts into accessible insights for everyday life.</p>
-                </div>
-                
-                <!-- Host 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl host-card transition-all duration-300">
-                    <div class="w-24 h-24 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <span class="text-white text-xl font-bold">J</span>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h4 data-en="Expert Insights" data-fa="بینش تخصصی">Expert Insights</h4>
+                        <p data-en="Research-backed discussions from an AI scientist"
+                            data-fa="بحث‌های مبتنی بر تحقیق از یک دانشمند هوش مصنوعی">Research-backed discussions from
+                            an AI scientist</p>
                     </div>
-                    <h3 class="text-xl font-bold text-center mb-2">Javad Taghdisi</h3>
-                    <p class="text-gray-500 text-center mb-4">Brand Strategist & AI Content Creator</p>
-                    <p class="text-gray-700">Creative thinker who connects AI developments with real-world applications and business implications.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h4 data-en="Bilingual Content" data-fa="محتوای دوزبانه">Bilingual Content</h4>
+                        <p data-en="Discussions in both English and Farsi" data-fa="بحث به زبان‌های انگلیسی و فارسی">
+                            Discussions in both English and Farsi</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h4 data-en="Fresh Perspectives" data-fa="دیدگاه‌های تازه">Fresh Perspectives</h4>
+                        <p data-en="Creative and educational viewpoints combined"
+                            data-fa="ترکیب دیدگاه‌های خلاقانه و آموزشی">Creative and educational viewpoints combined</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="bg-black text-white p-8 md:p-12 rounded-xl">
-                <div class="max-w-4xl mx-auto">
-                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center glow-effect">Our Journey So Far</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div class="bg-gray-900 p-4 rounded-lg text-center stats-item">
-                            <div class="text-2xl font-bold text-blue-300">66</div>
-                            <div class="text-sm text-gray-300">Episodes</div>
-                        </div>
-                        <div class="bg-gray-900 p-4 rounded-lg text-center stats-item">
-                            <div class="text-2xl font-bold text-blue-300">651</div>
-                            <div class="text-sm text-gray-300">Subscribers</div>
-                        </div>
-                        <div class="bg-gray-900 p-4 rounded-lg text-center stats-item">
-                            <div class="text-2xl font-bold text-blue-300">20,224</div>
-                            <div class="text-sm text-gray-300">Views</div>
-                        </div>
-                        <div class="bg-gray-900 p-4 rounded-lg text-center stats-item">
-                            <div class="text-2xl font-bold text-blue-300">2024</div>
-                            <div class="text-sm text-gray-300">Since July</div>
-                        </div>
-                    </div>
-                    <p class="text-center text-gray-300">What started as casual conversations between friends has grown into a weekly ritual exploring how artificial intelligence intersects with our daily lives. We're just getting started, and we'd love for you to join us on this journey.</p>
+        </div>
+    </section>
+
+    <!-- Hosts Section -->
+    <section class="hosts-section" id="hosts">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-en="Meet the Team" data-fa="با تیم آشنا شوید">Meet the Team</span>
+                <h2 data-en="Your Hosts" data-fa="میزبانان شما">Your Hosts</h2>
+                <p data-en="Three perspectives, endless conversations" data-fa="سه دیدگاه، گفتگوهای بی‌پایان">Three
+                    perspectives, endless conversations</p>
+            </div>
+
+            <div class="hosts-grid">
+                <div class="host-card">
+                    <div class="host-avatar">M</div>
+                    <h3>Mahdiyar Molahasani</h3>
+                    <p class="host-role" data-en="AI Research Scientist" data-fa="دانشمند تحقیقاتی هوش مصنوعی">AI
+                        Research Scientist</p>
+                    <p data-en="Bringing academic rigor and cutting-edge research insights to our discussions. Explores the technical depths of AI with clarity."
+                        data-fa="آوردن دقت علمی و بینش‌های تحقیقاتی پیشرفته به بحث‌های ما. کاوش در عمق فنی هوش مصنوعی با شفافیت.">
+                        Bringing academic rigor and cutting-edge research insights to our discussions. Explores the
+                        technical depths of AI with clarity.</p>
+                </div>
+
+                <div class="host-card">
+                    <div class="host-avatar">A</div>
+                    <h3>Amin Omidvar</h3>
+                    <p class="host-role" data-en="Innovative English Teacher & Coach"
+                        data-fa="مدرس نوآور زبان انگلیسی و مربی توسعه فردی">Innovative English Teacher & Coach</p>
+                    <p data-en="Personal development coach who translates complex AI concepts into accessible, everyday language for all audiences."
+                        data-fa="مربی توسعه فردی که مفاهیم پیچیده هوش مصنوعی را به زبان ساده و قابل فهم برای همه ترجمه می‌کند.">
+                        Personal development coach who translates complex AI concepts into accessible, everyday language
+                        for all audiences.</p>
+                </div>
+
+                <div class="host-card">
+                    <div class="host-avatar">J</div>
+                    <h3>Javad Taghdisi</h3>
+                    <p class="host-role" data-en="Creative Director & Campaign Designer"
+                        data-fa="مدیر خلاق و طراح کمپین">Creative Director & Campaign Designer</p>
+                    <p data-en="Connects AI developments with creative applications, business implications, and real-world brand storytelling."
+                        data-fa="پیوند دادن پیشرفت‌های هوش مصنوعی با کاربردهای خلاقانه، پیامدهای کسب‌وکار و داستان‌سرایی برند.">
+                        Connects AI developments with creative applications, business implications, and real-world brand
+                        storytelling.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Episodes Section -->
-    <section id="episodes" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Recent Episodes</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Browse our latest discussions on AI and everyday life.</p>
+    <section class="episodes-section" id="episodes">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-en="Latest Content" data-fa="آخرین محتوا">Latest Content</span>
+                <h2 data-en="Recent Episodes" data-fa="قسمت‌های اخیر">Recent Episodes</h2>
+                <p data-en="Dive into our weekly discussions" data-fa="در بحث‌های هفتگی ما غوطه‌ور شوید">Dive into our
+                    weekly discussions</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                <!-- Episode 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm video-card transition-all duration-300">
-                    <div class="relative pb-[56.25%] bg-gray-200">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 bg-black bg-opacity-70 rounded-full flex items-center justify-center">
-                                <i class="fas fa-play text-white text-xl"></i>
-                            </div>
-                        </div>
+
+            <div class="episodes-grid">
+                <div class="episode-card">
+                    <div class="episode-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-lg mb-2">AI in Education: The Future of Learning</h3>
-                        <p class="text-gray-600 text-sm mb-4">How AI is transforming classrooms and self-directed learning.</p>
-                        <div class="flex justify-between items-center text-sm text-gray-500">
-                            <span>Episode 66</span>
-                            <span>Jul 12, 2024</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Episode 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm video-card transition-all duration-300">
-                    <div class="relative pb-[56.25%] bg-gray-200">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 bg-black bg-opacity-70 rounded-full flex items-center justify-center">
-                                <i class="fas fa-play text-white text-xl"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-lg mb-2">Ethical AI: Who Decides What's Right?</h3>
-                        <p class="text-gray-600 text-sm mb-4">Exploring the moral frameworks behind AI decision-making.</p>
-                        <div class="flex justify-between items-center text-sm text-gray-500">
-                            <span>Episode 65</span>
-                            <span>Jul 5, 2024</span>
+                    <div class="episode-content">
+                        <span class="episode-tag" data-en="Latest" data-fa="جدیدترین">Latest</span>
+                        <h3 data-en="AI in Education: Transforming How We Learn"
+                            data-fa="هوش مصنوعی در آموزش: تحول در نحوه یادگیری">AI in Education: Transforming How We
+                            Learn</h3>
+                        <p data-en="Exploring personalized learning and AI tutors changing the classroom."
+                            data-fa="کاوش در یادگیری شخصی‌سازی‌شده و معلمان هوش مصنوعی که کلاس درس را تغییر می‌دهند.">
+                            Exploring personalized learning and AI tutors changing the classroom.</p>
+                        <div class="episode-meta">
+                            <span data-en="Episode 131" data-fa="قسمت ۱۳۱">Episode 131</span>
+                            <span data-en="December 2024" data-fa="دسامبر ۲۰۲۴">December 2024</span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Episode 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm video-card transition-all duration-300">
-                    <div class="relative pb-[56.25%] bg-gray-200">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 bg-black bg-opacity-70 rounded-full flex items-center justify-center">
-                                <i class="fas fa-play text-white text-xl"></i>
-                            </div>
+
+                <div class="episode-card">
+                    <div class="episode-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="episode-content">
+                        <span class="episode-tag" data-en="Popular" data-fa="محبوب">Popular</span>
+                        <h3 data-en="ChatGPT & Beyond: The Future of Conversations"
+                            data-fa="ChatGPT و فراتر: آینده مکالمات">ChatGPT & Beyond: The Future of Conversations</h3>
+                        <p data-en="How large language models are reshaping human-computer interaction."
+                            data-fa="چگونه مدل‌های زبانی بزرگ تعامل انسان و کامپیوتر را تغییر می‌دهند.">How large
+                            language models are reshaping human-computer interaction.</p>
+                        <div class="episode-meta">
+                            <span data-en="Episode 130" data-fa="قسمت ۱۳۰">Episode 130</span>
+                            <span data-en="December 2024" data-fa="دسامبر ۲۰۲۴">December 2024</span>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-lg mb-2">AI Assistants: Helpful or Hindrance?</h3>
-                        <p class="text-gray-600 text-sm mb-4">Examining how AI assistants impact our productivity and privacy.</p>
-                        <div class="flex justify-between items-center text-sm text-gray-500">
-                            <span>Episode 64</span>
-                            <span>Jun 28, 2024</span>
+                </div>
+
+                <div class="episode-card">
+                    <div class="episode-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="episode-content">
+                        <span class="episode-tag" data-en="Featured" data-fa="ویژه">Featured</span>
+                        <h3 data-en="AI Ethics: Who Decides What's Right?"
+                            data-fa="اخلاق هوش مصنوعی: چه کسی تصمیم می‌گیرد چه چیزی درست است؟">AI Ethics: Who Decides
+                            What's Right?</h3>
+                        <p data-en="Deep dive into the moral frameworks behind AI decision-making."
+                            data-fa="عمیق شدن در چارچوب‌های اخلاقی پشت تصمیم‌گیری هوش مصنوعی.">Deep dive into the moral
+                            frameworks behind AI decision-making.</p>
+                        <div class="episode-meta">
+                            <span data-en="Episode 129" data-fa="قسمت ۱۲۹">Episode 129</span>
+                            <span data-en="November 2024" data-fa="نوامبر ۲۰۲۴">November 2024</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center">
-                <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="inline-block bg-black text-white px-8 py-3 rounded-full neon-btn">
-                    <i class="fab fa-youtube mr-2"></i> View All Episodes
+
+            <div class="view-all-btn">
+                <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="btn-primary">
+                    <i class="fab fa-youtube"></i>
+                    <span data-en="View All 131 Episodes" data-fa="مشاهده همه ۱۳۱ قسمت">View All 131 Episodes</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Community Section -->
-    <section id="community" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Join Our Community</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Your voice matters in these discussions. Become the fourth member of our conversations.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="bg-gray-50 p-8 rounded-xl community-card">
-                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-comments text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-4">Share Your Thoughts</h3>
-                    <p class="text-gray-700 text-center">Comment on our YouTube videos with your perspectives and questions.</p>
-                </div>
-                
-                <div class="bg-gray-50 p-8 rounded-xl community-card">
-                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-lightbulb text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-4">Suggest Topics</h3>
-                    <p class="text-gray-700 text-center">Tell us what AI topics you'd like us to explore in future episodes.</p>
-                </div>
-                
-                <div class="bg-gray-50 p-8 rounded-xl community-card">
-                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-users text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-4">Connect With Others</h3>
-                    <p class="text-gray-700 text-center">Engage with fellow AI enthusiasts in our growing community.</p>
-                </div>
-            </div>
-            
-            <div class="bg-black text-white p-8 rounded-xl max-w-4xl mx-auto">
-                <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="mb-6 md:mb-0 md:mr-8">
-                        <h3 class="text-xl font-bold mb-2">Never Miss an Episode</h3>
-                        <p class="text-gray-300">Subscribe to our YouTube channel for weekly AI discussions.</p>
-                    </div>
-                    <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="bg-white text-black px-6 py-3 rounded-full flex items-center justify-center space-x-2 neon-btn">
+    <!-- Community CTA Section -->
+    <section class="cta-section" id="community">
+        <div class="container">
+            <div class="cta-content">
+                <h2 data-en="Join Our Growing Community" data-fa="به جامعه رو به رشد ما بپیوندید">Join Our Growing
+                    Community</h2>
+                <p data-en="Be the fourth member of our conversations. Subscribe, comment, and help shape our discussions!"
+                    data-fa="عضو چهارم گفتگوهای ما باشید. عضو شوید، نظر دهید و به شکل‌دهی بحث‌های ما کمک کنید!">Be the
+                    fourth member of our conversations. Subscribe, comment, and help shape our discussions!</p>
+                <div class="hero-buttons">
+                    <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="btn-primary">
                         <i class="fab fa-youtube"></i>
-                        <span>Subscribe Now</span>
+                        <span data-en="Subscribe Now" data-fa="همین حالا عضو شوید">Subscribe Now</span>
+                    </a>
+                    <a href="https://www.youtube.com/@AI_Time_show" target="_blank" class="btn-secondary">
+                        <i class="fas fa-bell"></i>
+                        <span data-en="Turn On Notifications" data-fa="اعلان‌ها را روشن کنید">Turn On
+                            Notifications</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Have questions or collaboration ideas? We'd love to hear from you.</p>
-            </div>
-            
-            <form class="bg-white p-8 rounded-xl shadow-sm">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent">
-                    </div>
-                </div>
-                <div class="mb-6">
-                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                    <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent">
-                </div>
-                <div class="mb-6">
-                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                    <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-black text-white py-3 rounded-full font-medium neon-btn">
-                    Send Message
-                </button>
-            </form>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="bg-black text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <img src="https://i.postimg.cc/PPRSYWpm/Logo-zoomed.png" alt="AI-Time Logo" class="h-8">
-                        <span class="text-xl font-bold">AI-TIME</span>
-                    </div>
-                    <p class="text-gray-400">Weekly discussions about artificial intelligence and everyday life.</p>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
-                        <li><a href="#episodes" class="text-gray-400 hover:text-white transition">Episodes</a></li>
-                        <li><a href="#community" class="text-gray-400 hover:text-white transition">Community</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo footer-logo">
+                        <img src="assets/logo.png" alt="AI.Time Logo">
+                    </a>
+                    <p data-en="Weekly discussions about artificial intelligence and everyday life. Making AI accessible to everyone."
+                        data-fa="بحث‌های هفتگی درباره هوش مصنوعی و زندگی روزمره. هوش مصنوعی را برای همه قابل دسترس می‌کنیم.">
+                        Weekly discussions about artificial intelligence and everyday life. Making AI accessible to
+                        everyone.</p>
+                    <div class="footer-social">
+                        <a href="https://www.youtube.com/@AI_Time_show" target="_blank"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Channel Stats</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-center">
-                            <i class="fas fa-users mr-2"></i>
-                            <span>651 Subscribers</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-video mr-2"></i>
-                            <span>66 Videos</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-eye mr-2"></i>
-                            <span>20,224 Views</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>Since July 2024</span>
-                        </li>
+
+                <div class="footer-column">
+                    <h4 data-en="Quick Links" data-fa="لینک‌های سریع">Quick Links</h4>
+                    <ul>
+                        <li><a href="#about" data-en="About Us" data-fa="درباره ما">About Us</a></li>
+                        <li><a href="#hosts" data-en="Our Hosts" data-fa="میزبانان ما">Our Hosts</a></li>
+                        <li><a href="#episodes" data-en="Episodes" data-fa="قسمت‌ها">Episodes</a></li>
+                        <li><a href="#community" data-en="Community" data-fa="انجمن">Community</a></li>
                     </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 data-en="Connect" data-fa="ارتباط">Connect</h4>
+                    <ul>
+                        <li><a href="https://www.youtube.com/@AI_Time_show" target="_blank" data-en="YouTube Channel"
+                                data-fa="کانال یوتیوب">YouTube Channel</a></li>
+                        <li><a href="#" data-en="Instagram" data-fa="اینستاگرام">Instagram</a></li>
+                        <li><a href="#" data-en="Twitter" data-fa="توییتر">Twitter</a></li>
+                        <li><a href="#" data-en="Contact Us" data-fa="تماس با ما">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 data-en="Channel Stats" data-fa="آمار کانال">Channel Stats</h4>
+                    <div class="footer-stats">
+                        <div class="footer-stat">
+                            <i class="fas fa-users"></i>
+                            <span data-en="1.13K Subscribers" data-fa="۱.۱۳ هزار مشترک">1.13K Subscribers</span>
+                        </div>
+                        <div class="footer-stat">
+                            <i class="fas fa-video"></i>
+                            <span data-en="131 Videos" data-fa="۱۳۱ ویدیو">131 Videos</span>
+                        </div>
+                        <div class="footer-stat">
+                            <i class="fas fa-eye"></i>
+                            <span data-en="94,178 Views" data-fa="۹۴,۱۷۸ بازدید">94,178 Views</span>
+                        </div>
+                        <div class="footer-stat">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-en="Since July 2024" data-fa="از جولای ۲۰۲۴">Since July 2024</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 AI-Time. All rights reserved. | Designed with ♥ for AI enthusiasts</p>
+
+            <div class="footer-bottom">
+                <p data-en="© 2024 AI.Time. All rights reserved." data-fa="© ۲۰۲۴ AI.Time. تمامی حقوق محفوظ است.">© 2024
+                    AI.Time. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#" data-en="Privacy Policy" data-fa="سیاست حریم خصوصی">Privacy Policy</a>
+                    <a href="#" data-en="Terms of Service" data-fa="شرایط خدمات">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple JavaScript for mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.querySelector('button.md\\:hidden');
-            const mobileMenu = document.querySelector('.md\\:flex.space-x-8');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('flex');
-                mobileMenu.classList.toggle('flex-col');
-                mobileMenu.classList.toggle('absolute');
-                mobileMenu.classList.toggle('top-16');
-                mobileMenu.classList.toggle('left-0');
-                mobileMenu.classList.toggle('right-0');
-                mobileMenu.classList.toggle('bg-white');
-                mobileMenu.classList.toggle('p-4');
-                mobileMenu.classList.toggle('shadow-md');
-                mobileMenu.classList.toggle('space-y-4');
-                mobileMenu.classList.toggle('space-x-0');
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        if (!mobileMenu.classList.contains('hidden')) {
-                            mobileMenuButton.click();
-                        }
+        // Language state
+        let currentLang = 'en';
+
+        // Language toggle function
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'fa' : 'en';
+            updateLanguage();
+            localStorage.setItem('aitime-lang', currentLang);
+        }
+
+        function updateLanguage() {
+            const langToggle = document.getElementById('langToggle');
+            const htmlRoot = document.getElementById('htmlRoot');
+
+            // Update toggle button text
+            langToggle.querySelector('.lang-text').textContent = currentLang === 'en' ? 'FA' : 'EN';
+
+            // Update HTML direction and lang attribute
+            htmlRoot.lang = currentLang === 'en' ? 'en' : 'fa';
+            htmlRoot.dir = currentLang === 'en' ? 'ltr' : 'rtl';
+            document.body.classList.toggle('rtl', currentLang === 'fa');
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    if (el.tagName === 'H1' || el.innerHTML.includes('<span')) {
+                        el.innerHTML = text;
+                    } else {
+                        el.textContent = text;
                     }
-                });
+                }
             });
+        }
+
+        // Initialize language from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('aitime-lang');
+            if (savedLang) {
+                currentLang = savedLang;
+                updateLanguage();
+            }
+
+            // Language toggle event
+            document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.host-card, .episode-card, .feature-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
+
 </html>
